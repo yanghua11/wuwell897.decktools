@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARDS 卡组更新工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>KARDS 卡组更新工具</h1>
+            <p class="subtitle">二战卡牌游戏卡组管理助手</p>
+        </header>
+
+        <div id="statusArea" class="status-area">
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <section id="loginSection" class="section">
+            <div class="section-header">
+                <h2>登录</h2>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="usernameInput">用户名</label>
+                    <input type="text" id="usernameInput" placeholder="请输入用户名" autocomplete="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="passwordInput">密码</label>
+                    <input type="password" id="passwordInput" placeholder="请输入密码" autocomplete="current-password" required>
+                </div>
+                <button type="submit" id="loginBtn" class="btn btn-primary">
+                    <span class="btn-text">登录</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+        </section>
+
+        <section id="dashboardSection" class="section hidden">
+            <div class="section-header">
+                <h2>控制面板</h2>
+                <button id="logoutBtn" class="btn btn-secondary btn-sm">退出登录</button>
+            </div>
+
+            <div id="userInfo" class="user-info">
+                <div class="info-card">
+                    <span class="info-label">用户ID</span>
+                    <span id="userIdDisplay" class="info-value">-</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">玩家ID</span>
+                    <span id="playerIdDisplay" class="info-value">-</span>
+                </div>
+            </div>
+
+            <div class="deck-section">
+                <div class="deck-section-header">
+                    <h3>卡组列表</h3>
+                    <button id="refreshDecksBtn" class="btn btn-secondary btn-sm">刷新</button>
+                </div>
+                <div id="deckList" class="deck-list">
+                    <div class="loading-placeholder">加载卡组中...</div>
+                </div>
+            </div>
+
+            <div id="deckDetailPanel" class="deck-detail-panel hidden">
+                <div class="section-header">
+                    <h3>卡组详情</h3>
+                </div>
+                <div id="deckDetailContent" class="deck-detail-content">
+                    <div class="detail-row">
+                        <span class="detail-label">名称</span>
+                        <span id="detailName" class="detail-value">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">ID</span>
+                        <span id="detailId" class="detail-value">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">阵营</span>
+                        <span id="detailFaction" class="detail-value">-</span>
+                    </div>
+                </div>
+                <div class="update-section">
+                    <h4>更新卡组代码</h4>
+                    <div class="form-group">
+                        <textarea id="deckCodeInput" placeholder="在此粘贴卡组代码..." rows="4"></textarea>
+                    </div>
+                    <div class="update-actions">
+                        <button id="updateDeckBtn" class="btn btn-primary">
+                            <span class="btn-text">确认更新</span>
+                            <span class="spinner"></span>
+                        </button>
+                        <button id="cancelUpdateBtn" class="btn btn-secondary">取消</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
