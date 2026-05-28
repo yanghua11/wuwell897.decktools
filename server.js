@@ -89,8 +89,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`KARDS Deck Updater proxy server running at http://127.0.0.1:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`KARDS Deck Updater proxy server running on port ${PORT}`);
   console.log(`Serving static files from ${path.join(__dirname, 'public')}`);
   console.log(`Proxying /api/* to https://${TARGET_HOST}`);
 });

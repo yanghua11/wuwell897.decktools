@@ -1,15 +1,17 @@
 {
-  "name": "kards-deck-updater-proxy",
+  "name": "kards-deck-updater",
   "version": "1.0.0",
-  "description": "Proxy server for KARDS deck updater tool",
+  "description": "KARDS deck updater - Web UI with proxy server",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "http-proxy-middleware": "^2.0.6",
     "https-proxy-agent": "^9.0.0"
   }
 }
