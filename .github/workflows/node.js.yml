@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI/CD
 
 on:
   push:
@@ -56,21 +56,10 @@ jobs:
     - name: Install dependencies
       run: npm ci --omit=dev
 
-    - name: Deploy to production
+    - name: Install Railway CLI
+      run: npm install -g @railway/cli
+
+    - name: Deploy to Railway
       env:
-        PORT: ${{ secrets.PORT || '8080' }}
-        NODE_ENV: production
-      run: |
-        echo "Ready to deploy. Configure your deployment target below."
-        echo ""
-        echo "Option A - Deploy via SSH:"
-        echo "  rsync -avz --exclude node_modules ./ user@host:/path/to/app"
-        echo "  ssh user@host 'cd /path/to/app && npm ci --omit=dev && pm2 restart server.js --name kards-updater'"
-        echo ""
-        echo "Option B - Docker:"
-        echo "  docker build -t kards-updater ."
-        echo "  docker run -d -p 8080:8080 kards-updater"
-        echo ""
-        echo "Option C - Fly.io / Railway / Render:"
-        echo "  Set start command: node server.js"
-        echo "  Set PORT env var accordingly"
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+      run: railway up --service ${{ vars.RAILWAY_SERVICE || '' }} --detach
